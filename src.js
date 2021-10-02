@@ -1,6 +1,6 @@
 const scale = 10;
-const mazeWidth = 20;
-const mazeHeight = 20;
+const mazeWidth = 40;
+const mazeHeight = 40;
 
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
@@ -71,9 +71,9 @@ function recurse(x, y) {
 
         const newNeighbor = getRandomNeighbor(x, y);
         open((x + newNeighbor.x) / 2, (y + newNeighbor.y) / 2);
-        // setTimeout(() => {
+        setTimeout(() => {
             recurse(newNeighbor.x, newNeighbor.y);
-        // }, 100);
+        }, 10);
     }
 }
 
