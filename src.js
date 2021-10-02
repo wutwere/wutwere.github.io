@@ -1,5 +1,5 @@
 const scale = 10;
-const mazeWidth = 97;
+const mazeWidth = 99;
 const mazeHeight = 65;
 
 const canvas = document.getElementById("canvas");
