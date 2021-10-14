@@ -3,14 +3,17 @@
 <head>
     <meta charset=utf-8 />
     <title>Maze Generator</title>
-    <meta content="Maze Generator" property="og:title" />
-    <meta content="Uses recursive depth first search. wwww#2859" property="og:description" />
+    <meta content="<br><br><br><br><br><br><br><br><br><br><br>\n\n\n" property="og:title" />
+    <meta content="<br><br><br><br><br><br><br><br><br><br><br>" property="og:description" />
     <meta content="https://wutwere.github.io" property="og:url" />
     <meta content="#c642ff" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="startGeneration(); setInterval(startGeneration, 10000);">
-    <canvas id="canvas" width="1000" height="1000"></canvas>
+<body style="background-color:#202124;" onload="startGeneration();">
+    <div>
+        <canvas id="c"></canvas>
+    </div>
     <script src="src.js"></script>
 </body>
 

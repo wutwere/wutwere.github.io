@@ -1,8 +1,8 @@
 const scale = 10;
-const mazeWidth = 99;
-const mazeHeight = 65;
+let mazeWidth = 99;
+let mazeHeight = 65;
 
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("c");
 const context = canvas.getContext("2d");
 
 const dx = [-2, 2, 0, 0];
@@ -12,7 +12,7 @@ let empty = [];
 let waitMul = 0;
 
 function open(x, y) {
-    setTimeout(() => { context.clearRect(x * scale, y * scale, scale, scale); }, (++waitMul) * 3);
+    setTimeout(() => { context.fillRect(x * scale, y * scale, scale, scale); }, (++waitMul) * 3);
 }
 
 function countNeighbors(x, y) {
@@ -69,13 +69,26 @@ function recurse(x, y) {
 }
 
 function startGeneration() {
-    waitMul = 0;
+    const widthpx = document.documentElement.clientWidth;
+    const heightpx = document.documentElement.clientHeight;
 
+    mazeWidth = Math.floor(widthpx / scale);
+    mazeHeight = Math.floor(heightpx / scale);
+
+    if (mazeWidth % 2 == 0) mazeWidth--;
+    if (mazeHeight % 2 == 0) mazeHeight--;
+
+    waitMul = 0;
     for (let i = 0; i < mazeWidth; i++) {
         empty[i] = [];
     }
 
-    context.fillRect(0, 0, scale * mazeWidth, scale * mazeHeight);
+    context.clearRect(0, 0, scale * mazeWidth, scale * mazeHeight);
+    canvas.width = mazeWidth * scale;
+    canvas.height = mazeHeight * scale;
+    context.fillStyle = "white";
 
     recurse(1, 1);
+
+    setTimeout(startGeneration, mazeWidth * mazeHeight * 3 / 2 + 2000);
 }
